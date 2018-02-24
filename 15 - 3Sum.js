@@ -8,19 +8,19 @@ var threeSum = function(nums) {
     var results = [];
 
     for(var i = 0; i<nums.length; i++) {
-        //Duplicate number will have duplicate result
+        //Duplicate number will have duplicate result, skip
         if (i && nums[i] === nums[i - 1]) continue 
 
-        let target = 0 - nums[i];
+        let rest = 0 - nums[i];
         
         let start = i+1;
         let end = nums.length-1;
 
         while(start < end) {
             sum = nums[start] + nums[end];
-            if(sum > target) {
+            if(sum > rest) {
                 end--;
-            } else if (sum<target) {
+            } else if (sum < rest) {
                 start++;
             } else {
                 let result = [nums[i], nums[start], nums[end]];
@@ -32,6 +32,7 @@ var threeSum = function(nums) {
                 }
                 start++;
 
+                //Same as above
                 while(nums[end] === nums[end-1]) {
                     end--;
                 }
