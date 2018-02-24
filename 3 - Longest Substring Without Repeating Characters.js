@@ -13,16 +13,17 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
+    //Early Bail
     if(s === null || s.length === 0){
         return 0;
     }
 
+    var hash = {};
     var currentLength = 0;
     var longestLength = currentLength;
-    var hash = {};
     var start = 0;
 
-    for(var i = start; i<s.length; i++) {
+    for(var i = start; i < s.length; i++) {
         if(hash[s[i]] !== undefined && hash[s[i]] >= start) {
            start = hash[s[i]] + 1;
            currentLength = i - start;
@@ -38,4 +39,3 @@ var lengthOfLongestSubstring = function(s) {
 
     return longestLength;
 };
-
